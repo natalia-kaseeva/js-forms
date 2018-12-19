@@ -23,7 +23,6 @@ $(document).ready(function(){
 			
     		var _textarea=_form.find('textarea'),
     			_commentErrorEmpty=_form.find('.notify'),
-    			valid=true;
 
     		$.each(_textarea,function(index,val){
     			var input=$(val),
