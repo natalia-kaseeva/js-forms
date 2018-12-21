@@ -28,7 +28,8 @@ $(document).ready(function(){
     			_emailWrong=$('#emailWrong'),
     			_errorRegistration=$('#errorRegistration'),
     			_emailValue=_inputEmail.val().trim(),
-    			_passwordValue=_inputPassword.val().trim();
+    			_passwordValue=_inputPassword.val().trim(),
+    			_emailCorrect="mail@mail.com";
 
     		if (_emailValue.length === 0) {
     			_emailError.fadeIn('notify--error-hide');
@@ -42,11 +43,9 @@ $(document).ready(function(){
     			var pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
     			if (pattern.test(_emailValue)) {
     				_emailWrong.fadeOut('notify--error-hide');
-
-    					if (_emailValue !=='mail@mail.com' && _passwordValue.length !== 0) {
-    						$('form').unbind('submit').submit();
-    					} 
-
+    				if (_emailValue !==_emailCorrect && _passwordValue.length !== 0) {
+    					$('form').unbind('submit').submit();
+    				} 
     			} else {
     				_emailWrong.fadeIn('notify--error-hide');
 					_errorRegistration.fadeOut('notify--error-hide');
@@ -54,7 +53,7 @@ $(document).ready(function(){
     			}
     		}
 
-    		if (_emailValue === 'mail@mail.com' && _passwordValue.length !== 0) {
+    		if (_emailValue === _emailCorrect && _passwordValue.length !== 0) {
     			_errorRegistration.fadeIn('notify--error-hide');
     		}
 
