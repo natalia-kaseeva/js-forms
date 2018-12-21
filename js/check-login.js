@@ -29,48 +29,46 @@ $(document).ready(function(){
     			_errorLogin=$('#errorLogin'),
     			_emailValue=_inputEmail.val().trim(),
     			_passwordValue=_inputPassword.val().trim();
+    			_emailCorrect="mail@mail.com";
+    			_passwordCorrect="123"
 
     		if (_emailValue.length === 0) {
-    			_emailError.removeClass('notify--error-hide');
+    			_emailError.fadeIn('notify--error-hide');
     		} 
 
     		if (_passwordValue.length === 0) {
-    			_passwordError.removeClass('notify--error-hide');
+    			_passwordError.fadeIn('notify--error-hide');
     		} 
 
     		if (_emailValue !== '') {
     			var pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
-    			if (pattern.test(_emailValue)) {
-    				if (_emailValue !== 'mail@mail.com' || _passwordValue !== '123') {
-    					_errorLogin.removeClass('notify--error-hide');
+    			if (pattern.test(_emailValue)) {   				
+    				if (_passwordValue !== _passwordCorrect && _passwordValue.length !== 0 ) {
+    					_errorLogin.fadeIn('notify--error-hide');
+    				} else if (_emailValue !== _emailCorrect && _passwordValue === _passwordCorrect) {
+						_errorLogin.fadeIn('notify--error-hide');
     				}
-
     			} else {
-    				_emailWrong.removeClass('notify--error-hide');
-					_errorLogin.addClass('notify--error-hide');
-					_emailError.addClass('notify--error-hide');
+    				_emailWrong.fadeIn('notify--error-hide');
+					_errorLogin.fadeOut('notify--error-hide');
+					_emailError.fadeOut('notify--error-hide');
     			}
     		}
 
-    		if (_emailValue==='mail@mail.com' && _passwordValue==='123') {
+    		if (_emailValue===_emailCorrect && _passwordValue===_passwordCorrect) {
     			$('form').unbind('submit').submit();
     		} 
 
-    		if (_emailValue.length === 0 || _passwordValue.length === 0) {
-    			_errorLogin.addClass('notify--error-hide');
-    			
-    		}
-
     		_inputEmail.on('focus', function(){
-				_emailError.addClass('notify--error-hide');
-				_emailWrong.addClass('notify--error-hide');
-				_errorLogin.addClass('notify--error-hide');
+				_emailError.fadeOut('notify--error-hide');
+				_emailWrong.fadeOut('notify--error-hide');
+				_errorLogin.fadeOut('notify--error-hide');
 
 			});
 
 			_inputPassword.on('focus', function(){
-				_passwordError.addClass('notify--error-hide');
-				_errorLogin.addClass('notify--error-hide');
+				_passwordError.fadeOut('notify--error-hide');
+				_errorLogin.fadeOut('notify--error-hide');
 
 			});
 
