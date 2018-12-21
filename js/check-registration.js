@@ -42,27 +42,24 @@ $(document).ready(function(){
     			var pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
     			if (pattern.test(_emailValue)) {
     				_emailWrong.fadeOut('notify--error-hide');
+
+    					if (_emailValue !=='mail@mail.com' && _passwordValue.length !== 0) {
+    						$('form').unbind('submit').submit();
+    					} 
+
     			} else {
     				_emailWrong.fadeIn('notify--error-hide');
 					_errorRegistration.fadeOut('notify--error-hide');
 					_emailError.fadeOut('notify--error-hide');
-					console.log(222);
     			}
     		}
 
     		if (_emailValue === 'mail@mail.com' && _passwordValue.length !== 0) {
     			_errorRegistration.fadeIn('notify--error-hide');
-    			console.log(111);
     		}
-
-    		if (_emailValue==='mail@mail.com' && _passwordValue==='123') {
-    			$('form').unbind('submit').submit();
-    		} 
 
     		if (_emailValue.length === 0 || _passwordValue.length === 0) {
     			_errorRegistration.fadeOut('notify--error-hide');
-    			console.log(333);
-
     		}
 
     		_inputEmail.on('focus', function(){
@@ -75,7 +72,6 @@ $(document).ready(function(){
 			_inputPassword.on('focus', function(){
 				_passwordError.fadeOut('notify--error-hide');
 				_errorRegistration.fadeOut('notify--error-hide');
-
 			});
 
 		}
