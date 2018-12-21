@@ -29,8 +29,8 @@ $(document).ready(function(){
     			_errorLogin=$('#errorLogin'),
     			_emailValue=_inputEmail.val().trim(),
     			_passwordValue=_inputPassword.val().trim();
-    			_emailCorrect="mail@mail.com";
-    			_passwordCorrect="123"
+    			_emailCorrect="mail@mail.com",
+    			_passwordCorrect="123";
 
     		if (_emailValue.length === 0) {
     			_emailError.fadeIn('notify--error-hide');
