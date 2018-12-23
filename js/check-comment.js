@@ -22,7 +22,7 @@ $(document).ready(function(){
     		event.preventDefault();
 			
     		var _textarea=_form.find('textarea'),
-    			_commentErrorEmpty=_form.find('.notify'),
+    			_commentErrorEmpty=_form.find('.notify');
 
     		$.each(_textarea,function(index,val){
     			var input=$(val),
